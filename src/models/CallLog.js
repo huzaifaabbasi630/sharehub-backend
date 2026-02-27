@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const callLogSchema = new mongoose.Schema({
   roomId: {
@@ -41,4 +41,6 @@ const callLogSchema = new mongoose.Schema({
   timestamps: true
 });
 
-export const CallLog = mongoose.model('CallLog', callLogSchema);
+const CallLog = mongoose.model('CallLog', callLogSchema);
+
+module.exports = { CallLog };

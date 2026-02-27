@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const joinRequestSchema = new mongoose.Schema({
   roomId: {
@@ -23,4 +23,6 @@ const joinRequestSchema = new mongoose.Schema({
   timestamps: true
 });
 
-export const JoinRequest = mongoose.model('JoinRequest', joinRequestSchema);
+const JoinRequest = mongoose.model('JoinRequest', joinRequestSchema);
+
+module.exports = { JoinRequest };

@@ -1,4 +1,6 @@
 // Shared in-memory storage for when MongoDB is not available
-export const inMemoryRooms = new Map();
-export const inMemoryMessages = new Map();
-export const inMemoryJoinRequests = [];
+const inMemoryRooms = new Map();
+const inMemoryMessages = new Map();
+const inMemoryJoinRequests = [];
+
+module.exports = { inMemoryRooms, inMemoryMessages, inMemoryJoinRequests };

@@ -1,5 +1,5 @@
-import express from 'express';
-import { Message } from '../models/Message.js';
+const express = require('express');
+const { Message } = require('../models/Message.js');
 
 const router = express.Router();
 
@@ -39,4 +39,4 @@ router.put('/:messageId/read', async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

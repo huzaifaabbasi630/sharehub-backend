@@ -1,11 +1,11 @@
-import { Room } from '../models/Room.js';
-import { Message } from '../models/Message.js';
-import { JoinRequest } from '../models/JoinRequest.js';
-import { inMemoryRooms, inMemoryMessages, inMemoryJoinRequests } from '../utils/memoryStore.js';
+const { Room } = require('../models/Room.js');
+const { Message } = require('../models/Message.js');
+const { JoinRequest } = require('../models/JoinRequest.js');
+const { inMemoryRooms, inMemoryMessages, inMemoryJoinRequests } = require('../utils/memoryStore.js');
 
 const activeUsers = new Map();
 
-export const setupSocketHandlers = (io) => {
+const setupSocketHandlers = (io) => {
   io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
 
@@ -303,3 +303,5 @@ export const setupSocketHandlers = (io) => {
     });
   });
 };
+
+module.exports = { setupSocketHandlers };

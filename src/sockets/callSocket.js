@@ -1,8 +1,8 @@
-import { CallLog } from '../models/CallLog.js';
+const { CallLog } = require('../models/CallLog.js');
 
 const activeCalls = new Map();
 
-export const setupCallSocket = (io) => {
+const setupCallSocket = (io) => {
   io.on('connection', (socket) => {
     
     socket.on('start_call', async (data) => {
@@ -115,3 +115,5 @@ export const setupCallSocket = (io) => {
     });
   });
 };
+
+module.exports = { setupCallSocket };

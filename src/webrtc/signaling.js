@@ -1,4 +1,4 @@
-export const setupWebRTCSignaling = (io) => {
+const setupWebRTCSignaling = (io) => {
   io.on('connection', (socket) => {
     
     socket.on('join_call', (data) => {
@@ -39,3 +39,5 @@ export const setupWebRTCSignaling = (io) => {
     });
   });
 };
+
+module.exports = { setupWebRTCSignaling };

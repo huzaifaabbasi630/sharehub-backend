@@ -1,7 +1,7 @@
-import express from 'express';
-import { Room } from '../models/Room.js';
-import { Message } from '../models/Message.js';
-import { inMemoryRooms, inMemoryMessages } from '../utils/memoryStore.js';
+const express = require('express');
+const { Room } = require('../models/Room.js');
+const { Message } = require('../models/Message.js');
+const { inMemoryRooms, inMemoryMessages } = require('../utils/memoryStore.js');
 
 const router = express.Router();
 
@@ -86,4 +86,4 @@ router.get('/:roomId/messages', async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

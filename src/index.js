@@ -1,14 +1,14 @@
-import express from 'express';
-import { createServer } from 'http';
-import { Server } from 'socket.io';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { connectDB } from './config/db.js';
-import roomRoutes from './routes/roomRoutes.js';
-import messageRoutes from './routes/messageRoutes.js';
-import { setupSocketHandlers } from './sockets/socketHandler.js';
-import { setupCallSocket } from './sockets/callSocket.js';
-import { setupWebRTCSignaling } from './webrtc/signaling.js';
+const express = require('express');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const { connectDB } = require('./config/db.js');
+const roomRoutes = require('./routes/roomRoutes.js');
+const messageRoutes = require('./routes/messageRoutes.js');
+const { setupSocketHandlers } = require('./sockets/socketHandler.js');
+const { setupCallSocket } = require('./sockets/callSocket.js');
+const { setupWebRTCSignaling } = require('./webrtc/signaling.js');
 
 dotenv.config();
 
@@ -39,10 +39,13 @@ setupSocketHandlers(io);
 setupCallSocket(io);
 setupWebRTCSignaling(io);
 
-const PORT = process.env.PORT || 5000;
+// For local development only
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  
+  httpServer.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
-httpServer.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
-export { io };
+module.exports = { app, httpServer, io };
